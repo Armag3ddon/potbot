@@ -1,2 +1,2 @@
 # potbot
-Discord für den mods.de Discord Server
+Discord Bot für den mods.de Discord Server
