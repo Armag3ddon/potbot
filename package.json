@@ -1,0 +1,28 @@
+{
+  "name": "potbot",
+  "version": "1.0.0",
+  "description": "A Discord bot for the mods.de server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Armag3ddon/potbot.git"
+  },
+  "keywords": [
+    "Discord",
+    "bot"
+  ],
+  "author": "Felix Wagner",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Armag3ddon/potbot/issues"
+  },
+  "homepage": "https://github.com/Armag3ddon/potbot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.20.0"
+  }
+}
