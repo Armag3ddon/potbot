@@ -6,3 +6,4 @@ discord.js
 dotenv
 axios
 xml2js
+youtube-search
