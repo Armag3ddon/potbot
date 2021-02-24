@@ -31,6 +31,18 @@ client.on('message', message => {
 
 	const command = client.commands.get(commandName);
 
+	if (command.args && !args.length) {
+		let reply = `Dieser Befehl verlangt nach mehr, du LoPo ${message.author}.`;
+
+		if (command.usage) {
+			reply += `\nKorrekt wäre gewesen: '${prefix}${command.name} ${command.usage}'`;
+		}
+
+		reply += '\n!hilfe für eine Übersicht aller Befehle.';
+
+		return message.channel.send(reply);
+	}
+
 	try {
 		command.execute(message, args);
 	} catch (error) {
