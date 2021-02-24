@@ -3,7 +3,20 @@ const { prefix } = require('../config.json');
 module.exports = {
 	name: 'message',
 	execute(message) {
-		if (!message.content.startsWith(prefix) || message.author.bot) return;
+		if (message.author.bot) return;
+		if (message.mentions.users &&
+			message.mentions.users.size > 0) {
+			let mention = false;
+			for (const id of message.mentions.users.keys()) {
+				if (id === message.client.user.id) {
+					mention = true;
+				}
+			}
+			if (mention) {
+				return message.channel.send('Ich bin ein Bot. !hilfe für mehr.');
+			}
+		}
+		if (!message.content.startsWith(prefix)) return;
 
 		const args = message.content.slice(prefix.length).trim().split(/ +/);
 		const commandName = args.shift().toLowerCase();
@@ -27,7 +40,8 @@ module.exports = {
 
 		try {
 			command.execute(message, args);
-		} catch (error) {
+		}
+		catch (error) {
 			console.error(error);
 			message.reply('Ich habe einen Randbauer gebaut.');
 		}
