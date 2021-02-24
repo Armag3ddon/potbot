@@ -9,8 +9,6 @@ const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'
 const dotenv = require('dotenv');
 dotenv.config();
 
-const { prefix } = require('./config.json');
-
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
@@ -20,7 +18,8 @@ for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args, client));
-	} else {
+	}
+	else {
 		client.on(event.name, (...args) => event.execute(...args, client));
 	}
 }
