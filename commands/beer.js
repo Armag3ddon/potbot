@@ -1,6 +1,7 @@
 module.exports = {
 	name: 'bier',
-	description: 'Saufn!',
+	aliases: ['beer', 'äppler', 'saufn'],
+	description: 'Saufn, eh!',
 	execute(message, args) {
 		message.channel.send(':beers:');
 	},
