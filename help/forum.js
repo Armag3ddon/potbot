@@ -5,7 +5,7 @@ const axios = require('axios').default;
 
 const self = module.exports = {
 	baseURL: 'https://forum.mods.de/bb/xml/',
-	async getThread(tid, pid) {
+	async getThreadByPost(tid, pid) {
 		if (typeof tid === 'string') {
 			tid = parseInt(tid);
 			if (isNaN(tid)) {
@@ -21,6 +21,17 @@ const self = module.exports = {
 		let url = this.baseURL + 'thread.php?';
 		url += 'TID=' + tid;
 		url += '&PID=' + pid;
+		return self.get(url);
+	},
+	async getThread(tid) {
+		if (typeof tid === 'string') {
+			tid = parseInt(tid);
+			if (isNaN(tid)) {
+				throw 'TID ist keine gültige Zahl!';
+			}
+		}
+		let url = this.baseURL + 'thread.php?';
+		url += 'TID=' + tid;
 		return self.get(url);
 	},
 	async get(url) {
