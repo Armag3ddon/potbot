@@ -1,4 +1,5 @@
 const { prefix } = require('../config.json');
+const threadname = require('../help/threadname.js');
 
 module.exports = {
 	name: 'message',
@@ -16,7 +17,13 @@ module.exports = {
 				return message.channel.send('Ich bin ein Bot. !hilfe für mehr.');
 			}
 		}
-		if (!message.content.startsWith(prefix)) return;
+		if (!message.content.startsWith(prefix)) {
+			if (message.content.includes('forum.mods.de/bb/thread.php') ||
+				message.content.includes('forum.mods.de/thread.php')) {
+				threadname.execute(message);
+			}
+			return;
+		}
 
 		const args = message.content.slice(prefix.length).trim().split(/ +/);
 		const commandName = args.shift().toLowerCase();
