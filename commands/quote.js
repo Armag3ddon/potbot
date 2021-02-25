@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const xml2js = require('xml2js');
 const forum = require('../help/forum.js');
 const bbcode = require('../help/bbcode.js');
+const occurences = require('../help/occurrences.js');
 
 module.exports = {
 	name: 'quote',
@@ -27,7 +28,7 @@ module.exports = {
 			const tid = url.searchParams.get('TID');
 			const pid = url.searchParams.get('PID');
 			try {
-				const response = await forum.getThread(tid, pid);
+				const response = await forum.getThreadByPost(tid, pid);
 				const parser = new xml2js.Parser();
 				parser.parseString(response, function(err, data) {
 					if (err) {
@@ -61,8 +62,9 @@ module.exports = {
 					const posttitle = posts[post]['message'][0]['title'][0];
 
 					if (avatar != '') {
+						// Replace whitespaces in the avatar url because some user pic just have whitespaces vOv
 						embed.setAuthor(user,
-							'https://forum.mods.de' + avatar,
+							'https://forum.mods.de' + avatar.replace(/\s/g, '%20'),
 							'https://my.mods.de/' + userid);
 					}
 					else {
@@ -74,6 +76,13 @@ module.exports = {
 					// Trim title to the allowed maximum of 256 characters
 					embed.setTitle('Thread: ' + threadtitle.substr(0, 256));
 
+					// If only a single quote is in the postings, make it nice
+					if (occurences.occurrences(content, '[quote') == 1 &&
+						occurences.occurrences(content, '[/quote]') == 1) {
+						content = content.replace(/\[quote/g, '```[quote');
+						content = content.replace(/\[\/quote\]/g, '[/quote]```');
+					}
+
 					content = bbcode.process({ text: content }).html;
 
 					if (posttitle != '') {
@@ -81,7 +90,9 @@ module.exports = {
 					}
 
 					if (content.length > 2048) {
-						content = '**Dieser Post überschreitet die von Discord erlaubte Zeichenmenge von 2048!**';
+						content = '**Dieser Post überschreitet die von Discord erlaubte Zeichenmenge von 2048!**'
+							+ '\nHier ist eine gekürzte Vorschau:'
+							+ '\n\n' + content.substr(0, 1500);
 					}
 
 					embed.setDescription(content);
@@ -95,7 +106,13 @@ module.exports = {
 						embed.setFooter(time);
 					}
 
-					message.channel.send(embed);
+					try {
+						message.channel.send(embed);
+					}
+					catch(error) {
+						console.log(error);
+						message.channel.send('Ich möchte zitieren, aber Discord lässt mich nicht!');
+					}
 				});
 			}
 			catch (error) {

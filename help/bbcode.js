@@ -143,15 +143,14 @@ const XBBCODE = (function() {
 			},
 			restrictChildrenTo: ["*"]
 		},
-		"quote": {
+/*		"quote": {
 			openTag: function(params,content) {
 				return '```';
 			},
 			closeTag: function(params,content) {
 				return '```';
-			},
-			noParse: true
-		},
+			}
+		},*/
 		"s": {
 			openTag: function(params,content) {
 				return '~~';
