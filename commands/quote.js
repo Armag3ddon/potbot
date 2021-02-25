@@ -32,7 +32,10 @@ module.exports = {
 				parser.parseString(response, function(err, data) {
 					if (err) {
 						console.log(err);
-						throw 'Es gab ein Problem beim Verstehen des Forums.';
+						return message.channel.send('Es gab ein Problem beim Verstehen des Forums.');
+					}
+					if (data['invalid-thread'] === '') {
+						return message.channel.send('Thread ID konnte nicht gefunden werden.');
 					}
 					// Go through the weird json we got
 					const posts = data.thread.posts[0].post;
@@ -43,7 +46,7 @@ module.exports = {
 						}
 					}
 					if (post == -1) {
-						throw 'Post ID konnte nicht gefunden werden.';
+						return message.channel.send('Post ID konnte nicht gefunden werden.');
 					}
 
 					const embed = new Discord.MessageEmbed();
