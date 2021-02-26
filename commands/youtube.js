@@ -8,6 +8,7 @@ module.exports = {
 	description: 'Bettet das erste gefundene Youtube-Video ein.',
 	args: true,
 	usage: '<Begriffe für Youtube-Suche>',
+	filename: 'youtube',
 	execute(message, args) {
 		let searchstring = '';
 		for (let i = 0; i < args.length; i++) {

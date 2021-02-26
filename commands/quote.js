@@ -12,6 +12,7 @@ module.exports = {
 	description: 'Bettet einen bestimmten Post in Discord ein.',
 	args: true,
 	usage: '<Post-URL>',
+	filename: 'quote',
 	async execute(message, args) {
 		try {
 			const url = new URL(args[0]);

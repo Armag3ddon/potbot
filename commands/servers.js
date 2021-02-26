@@ -2,6 +2,7 @@ module.exports = {
 	name: 'servers',
 	description: '',
 	hidden: true,
+	filename: 'servers',
 	execute(message) {
 		if (message.author.id != process.env.OWNER_ID) return;
 

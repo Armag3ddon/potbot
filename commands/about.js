@@ -2,6 +2,7 @@ module.exports = {
 	name: 'über',
 	aliases: ['about', 'was'],
 	description: 'Infos über diesen Bot.',
+	filename: 'about',
 	execute(message, args) {
 		const data = [];
 

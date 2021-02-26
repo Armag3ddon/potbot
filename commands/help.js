@@ -5,6 +5,7 @@ module.exports = {
 	aliases: ['commands', 'help', 'befehle', 'bot'],
 	description: 'Alle Befehle oder Hilfe für einen einzelnen Befehl anzeigen.',
 	usage: '<Befehl>',
+	filename: 'help',
 	execute(message, args) {
 		const data = [];
 		const { commands } = message.client;
