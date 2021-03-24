@@ -3,6 +3,7 @@ module.exports = {
 	aliases: ['eumel', 'boobs', 'moepse', 'boob', 'bazonkers'],
 	description: 'XXX',
 	filename: 'boob',
+	nsfw: true,
 	execute(message) {
 		if (!message.channel.nsfw) return message.react('❌');
 

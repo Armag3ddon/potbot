@@ -5,6 +5,7 @@ module.exports = {
 	aliases: ['sperm', 'cum', 'orgasm'],
 	description: 'XXX',
 	filename: 'lewd',
+	nsfw: true,
 	execute(message) {
 		if (!message.channel.nsfw) return message.react('❌');
 

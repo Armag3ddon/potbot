@@ -40,6 +40,9 @@ module.exports = {
 		if (!command || command.hidden) {
 			return message.reply('Diesen Befehl kenne ich nicht. Keine Hilfe für dich!');
 		}
+		if (command.nsfw && !message.channel.nsfw) {
+			return message.reply('NSFW-Befehle sollen in NSFW-Channeln bleiben!');
+		}
 
 		data.push(`**Befehl:** ${command.name}`);
 
