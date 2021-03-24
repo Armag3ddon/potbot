@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'titten',
-	aliases: ['eumel', 'boobs', 'moepse', 'boob', 'bazonkers'],
+	aliases: ['eumel', 'boobs', 'moepse', 'boob', 'euter', 'bazonkers'],
 	description: 'XXX',
 	filename: 'boob',
 	nsfw: true,
