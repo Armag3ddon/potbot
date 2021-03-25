@@ -5,8 +5,6 @@ module.exports = {
 	description: 'Arma.',
 	filename: 'arma',
 	execute(message) {
-		const attachment = new MessageAttachment('https://i.imgur.com/dm2gjdA.mp4');
-
-		message.channel.send(attachment);
+		message.channel.send('https://i.imgur.com/dm2gjdA.mp4');
 	},
 };
