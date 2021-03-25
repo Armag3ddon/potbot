@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'butt',
-	aliases: ['butthole', 'loch', 'poloch', 'arschloch'],
+	aliases: ['butthole', 'loch', 'poloch', 'arschloch', 'asshole'],
 	description: 'XXX',
 	filename: 'butt',
 	nsfw: true,

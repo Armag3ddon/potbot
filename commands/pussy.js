@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'pussy',
-	aliases: ['muschi', 'vagina', 'vulva', 'möse'],
+	aliases: ['muschi', 'vagina', 'vulva', 'möse', 'schnecke', 'fotze'],
 	description: 'XXX',
 	filename: 'pussy',
 	nsfw: true,
