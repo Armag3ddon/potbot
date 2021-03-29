@@ -1,3 +1,5 @@
+const postrandom = require('../help/postrandom.js');
+
 module.exports = {
 	name: 'pussy',
 	aliases: ['muschi', 'vagina', 'vulva', 'möse', 'schnecke', 'fotze'],
@@ -8,8 +10,6 @@ module.exports = {
 		if (!message.channel.nsfw) return message.react('❌');
 
 		const vids = process.env.PUSS.split(',');
-		const rnd_vid = vids[Math.floor(Math.random() * vids.length)];
-
-		message.channel.send(rnd_vid).then(msg => msg.react('💦'));
+		postrandom.postrandom(message, vids, '💦');
 	},
 };

@@ -1,3 +1,5 @@
+const postrandom = require('../help/postrandom.js');
+
 module.exports = {
 	name: 'butt',
 	aliases: ['butthole', 'loch', 'poloch', 'arschloch', 'asshole'],
@@ -8,8 +10,6 @@ module.exports = {
 		if (!message.channel.nsfw) return message.react('❌');
 
 		const vids = process.env.BUTT.split(',');
-		const rnd_vid = vids[Math.floor(Math.random() * vids.length)];
-
-		message.channel.send(rnd_vid).then(msg => msg.react('🍑'));
+		postrandom.postrandom(message, vids, '🍑');
 	},
 };
