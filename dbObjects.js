@@ -7,13 +7,13 @@ const sequelize = new Sequelize({
 	storage: 'database.sqlite',
 });
 
-const Users = require('./models/Users')(sequelize, Sequelize.DataTypes);
+const Users = require('./models/User')(sequelize, Sequelize.DataTypes);
 const Messages = require('./models/Message')(sequelize, Sequelize.DataTypes);
 
 /* eslint-disable-next-line func-names */
-Users.prototype.addPoints = async function(number) {
+Users.addPoints = async function(user, number) {
 	const userItem = await Users.findOne({
-		where: { user_id: this.user_id },
+		where: { user_id: user },
 	});
 
 	if (userItem) {
@@ -21,26 +21,44 @@ Users.prototype.addPoints = async function(number) {
 		return userItem.save();
 	}
 
-	return Users.create({ user_id: this.user_id, balance: number });
+	return Users.create({ user_id: user, balance: number });
 };
 
 /* eslint-disable-next-line func-names */
-Users.prototype.getPoints = function() {
-	return Users.findAll({
-		where: { user_id: this.user_id },
-		include: ['balance'],
+Users.getPoints = async function(id) {
+	const userItem = await Users.findOne({
+		where: { user_id: id },
 	});
+	if (userItem) {
+		return userItem.balance;
+	}
+	return '0';
 };
 
 /* eslint-disable-next-line func-names */
-Messages.store = async function(reaction_id) {
+Messages.store = async function(message_id) {
 	const messageItem = await Messages.findOne({
-		where: { message_id: this.message_id },
+		where: { message_id: message_id },
 	});
 
 	if (messageItem) return false;
 
-	return Messages.create({ message_id: this.message_id, reaction_message_id: reaction_id });
+	return Messages.create({ message_id: message_id, reaction_message_id: '' });
+};
+
+/* eslint-disable-next-line func-names */
+Messages.addReaction = async function(messageItem, reaction_id) {
+	messageItem.reaction_message_id = reaction_id;
+	return messageItem.save();
+};
+
+Messages.getReactionId = async function(message_id) {
+	const messageItem = await Messages.findOne({
+		where: { message_id: message_id },
+	});
+
+	if (!messageItem) return false;
+	return messageItem.reaction_message_id;
 };
 
 module.exports = { Users, Messages };
