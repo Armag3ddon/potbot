@@ -25,6 +25,8 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.20.0",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2",
     "xml2js": "^0.4.23",
     "youtube-search": "^1.1.6"
   }
