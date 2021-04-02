@@ -10,7 +10,6 @@ const sequelize = new Sequelize({
 const Users = require('./models/User')(sequelize, Sequelize.DataTypes);
 const Messages = require('./models/Message')(sequelize, Sequelize.DataTypes);
 
-/* eslint-disable-next-line func-names */
 Users.addPoints = async function(user, number) {
 	const userItem = await Users.findOne({
 		where: { user_id: user },
@@ -24,7 +23,6 @@ Users.addPoints = async function(user, number) {
 	return Users.create({ user_id: user, balance: number });
 };
 
-/* eslint-disable-next-line func-names */
 Users.getPoints = async function(id) {
 	const userItem = await Users.findOne({
 		where: { user_id: id },
@@ -35,7 +33,14 @@ Users.getPoints = async function(id) {
 	return '0';
 };
 
-/* eslint-disable-next-line func-names */
+Users.getBest = async function(amount) {
+	const userItems = await Users.findAll({
+		order: [['balance', 'DESC']],
+		limit: amount,
+	});
+	return userItems;
+};
+
 Messages.store = async function(message_id) {
 	const messageItem = await Messages.findOne({
 		where: { message_id: message_id },
@@ -46,7 +51,6 @@ Messages.store = async function(message_id) {
 	return Messages.create({ message_id: message_id, reaction_message_id: '' });
 };
 
-/* eslint-disable-next-line func-names */
 Messages.addReaction = async function(messageItem, reaction_id) {
 	messageItem.reaction_message_id = reaction_id;
 	return messageItem.save();
