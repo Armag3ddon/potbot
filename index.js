@@ -6,6 +6,9 @@ client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
+const { User, Message } = require('./dbObjects');
+const { Op } = require('sequelize');
+
 const dotenv = require('dotenv');
 dotenv.config();
 
