@@ -4,7 +4,7 @@ module.exports = {
 	description: 'Ein Tässchen gefällig?',
 	filename: 'tea',
 	execute(message) {
-		const tea = ['Darjeeling', 'Assam', 'Ceylon', 'Ostfriesentee mit ordentlich Kluntje', 'Sencha', 'Oolong', 'Pu-Erh', 'Yin Zhen Bai Hao', 'Pai Mu Tan', 'Lapsang Souchong', 'Genmaicha'];
+		const tea = ['Darjeeling', 'Assam', 'Ceylon', 'Ostfriesentee mit ordentlich Kluntje', 'Sencha', 'Oolong', 'Pu-Erh', 'Yin Zhen Bai Hao', 'Pai Mu Tan', 'Lapsang Souchong', 'Genmaicha', 'Earl Grey', 'English 5 o\'clock', 'English Breakfast'];
 		message.channel.send(':tea:');
 		message.channel.send('Ich trinke jetzt einen ' + tea[Math.floor(Math.random() * tea.length)] + '.');
 	},
