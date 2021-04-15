@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'brestätigt',
-	aliases: ['brestätigung', 'brestaetigung'],
+	aliases: ['brestätigung', 'brestaetigung', 'brestaetigt', 'brestätigen', 'brestaetigen', 'brefürwortet'],
 	description: 'Bregor kann das nur brestätigen!',
 	filename: 'brestaetigt',
 	execute(message) {
