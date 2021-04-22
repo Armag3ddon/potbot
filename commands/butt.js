@@ -1,4 +1,4 @@
-const postrandom = require('../help/postrandom.js');
+const randomimgcommand = require('../help/randomimgcommand.js');
 
 module.exports = {
 	name: 'butt',
@@ -6,10 +6,7 @@ module.exports = {
 	description: 'XXX',
 	filename: 'butt',
 	nsfw: true,
-	execute(message) {
-		if (!message.channel.nsfw) return message.react('❌');
-
-		const vids = process.env.BUTT.split(',');
-		postrandom.postrandom(message, vids, '🍑');
+	execute(message, args) {
+		randomimgcommand.execute(message, args, 'butt', '🍑', true);
 	},
 };
