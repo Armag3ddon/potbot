@@ -7,3 +7,5 @@ dotenv
 axios
 xml2js
 youtube-search
+sequelizer
+sqlite3
