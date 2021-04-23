@@ -20,7 +20,7 @@ module.exports = {
 			else {
 				message.channel.send(member.user.toString() + ' wird dringend gebeten, ins Horny Jail zu schauen.');
 			}
-			randomimgcommand.execute(message, args, 'bonk_nsfw', false, false);
+			randomimgcommand.execute(message, [], 'bonk_nsfw', false, false);
 		}
 		else {
 			const channel = message.channel.guild.channels.cache.find(chn => chn.id = process.env.HORNYJAIL_ID);
@@ -30,7 +30,7 @@ module.exports = {
 			else {
 				message.channel.send(message.author.toString() + ' schickt ' + member.user.toString() + ' ~~ins Horny Jail~~, in ' + channel.toString());
 			}
-			randomimgcommand.execute(message, args, 'bonk_sfw', false, false);
+			randomimgcommand.execute(message, [], 'bonk_sfw', false, false);
 		}
 	},
 };
