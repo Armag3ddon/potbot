@@ -1,7 +1,8 @@
 module.exports = {
 	name: 'kaffee',
 	aliases: ['coffee', 'schwarzesgold'],
-	description: 'Ein Tässchen gefällig?\n!kaffee oder !kaffee Sorte.',
+	description: 'Ein Tässchen gefällig?',
+	usage: '<Sorte>',
 	filename: 'coffee',
 	execute(message, args) {
 		const coffee = ['Americano', 'Filterkaffee', 'Espresso', 'Cappucino', 'Latte Macchiato', 'Mokka', 'Cortado', 'Espresso Macchiato', 'Flat White', 'Caffè Latte'];
