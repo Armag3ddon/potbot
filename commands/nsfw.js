@@ -12,6 +12,7 @@ module.exports = {
 
 		data.push(commands.map(function(currentValue) {
 			if (!currentValue.nsfw) return;
+			if (currentValue.hidden) return;
 			return prefix + currentValue.name;
 		}).filter(function(element) {
 			return element !== undefined;
